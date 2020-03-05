@@ -74,6 +74,8 @@ public class PageMeteo extends AppCompatActivity {
                     String vent = maintenant.getString("windSpeed");
 
 
+
+
                     TextView affichageMeteo = (TextView)findViewById(R.id.vueMeteoActuelle);
                     affichageMeteo.setText("");
                     affichageMeteo.append(soleilOuNuage + "\n");
@@ -82,6 +84,18 @@ public class PageMeteo extends AppCompatActivity {
                     affichageMeteo.append("Humidite : " + humidite + "\n");
                     affichageMeteo.append("Pression : " + pression + "\n");
                     affichageMeteo.append("Vent : " + vent + "\n");
+
+                    JSONArray listeAlertes = obj.getJSONArray("alerts");
+                    for (int position = 0; position < listeAlertes.length(); position ++)
+                    {
+                        JSONObject alerte = listeAlertes.getJSONObject(position);
+                        String titre = alerte.getString("title");
+                        System.out.println("Alerte :" + titre);
+                        String url = alerte.getString("uri");
+                        String description = alerte.getString("description");
+
+                        affichageMeteo.append(description);
+                    }
 
                     MeteoDAO meteoDAO = new MeteoDAO(getApplicationContext());
                     meteoDAO.ajouterMeteo(soleilOuNuage);
