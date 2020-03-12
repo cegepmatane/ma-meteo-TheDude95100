@@ -71,6 +71,7 @@ public class PageMeteo extends AppCompatActivity {
                     String temperatureRessentie = maintenant.getString("apparentTemperature");
                     String humidite = maintenant.getString("humidity");
                     String pression = maintenant.getString("pressure");
+                    String couvertureNuageuse = maintenant.getString("cloudCover");
                     String vent = maintenant.getString("windSpeed");
 
 
@@ -83,6 +84,7 @@ public class PageMeteo extends AppCompatActivity {
                     affichageMeteo.append("Temperature : " + temperature + " (Ressentie : "+temperatureRessentie+")\n");
                     affichageMeteo.append("Humidite : " + humidite + "\n");
                     affichageMeteo.append("Pression : " + pression + "\n");
+                    affichageMeteo.append("Couverture Nuageuse : " + couvertureNuageuse +"\n");
                     affichageMeteo.append("Vent : " + vent + "\n");
 
                     JSONArray listeAlertes = obj.getJSONArray("alerts");
